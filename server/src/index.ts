@@ -8,8 +8,7 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
-  // send ../scraper/zen_koans.json
-  res.sendFile(path.resolve(__dirname, "../../scraper/zen_koans.json"));
+  res.sendFile(path.resolve(__dirname, "./zen_koans.json"));
 });
 
 app.listen(port, () => {
