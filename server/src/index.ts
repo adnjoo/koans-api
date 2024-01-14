@@ -1,10 +1,12 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
+import cors from "cors";
 
 dotenv.config();
 
 const app: Express = express();
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
