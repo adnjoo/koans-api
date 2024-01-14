@@ -13,6 +13,7 @@ export default function CardExample({ link, title, description }: CardProps) {
         <a
           href={link}
           className="block p-4 text-xl font-bold text-center text-blue-500 hover:underline"
+          target="_blank"
         >
           {title}
         </a>
