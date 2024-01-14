@@ -21,7 +21,7 @@ async function scrape() {
         const koanPage = cheerio.load(koanResponse.data);
 
         // Extract the description from the individual koan page
-        const description = koanPage(".main p").text().trim();
+        const description = koanPage(".main p").text().trim().replace(/"/g, "'");
 
         koans.push({ title, link, description });
 
