@@ -1,4 +1,5 @@
 import React from "react";
+import parse from 'html-react-parser'
 
 export type CardProps = {
   link: string;
@@ -7,7 +8,7 @@ export type CardProps = {
   image?: string;
 };
 
-export default function CardExample({
+export function Card({
   link,
   title,
   description,
@@ -34,7 +35,7 @@ export default function CardExample({
           />
         )}
         <div className="p-4 text-md text-center text-gray-700">
-          {description}
+          {parse(description)}
         </div>
       </div>
     </div>
