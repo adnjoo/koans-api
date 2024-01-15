@@ -13,8 +13,11 @@ async function scrape() {
 
     const koanPromises = $(".zenkoanlist li")
       .map(async (index, element) => {
+        let koan = {};
         const title = $(element).text().trim();
         const link = $(element).find("a").attr("href");
+
+        const id = title.match(/\d+/)[0];
 
         // Fetch the individual koan page
         const koanResponse = await axios.get(link);
@@ -25,8 +28,25 @@ async function scrape() {
         const paragraphs = koanPage(".main p").map((index, element) => $(element).text().trim());
         const description = paragraphs.get().join('<br/><br/>');
 
+        koan = { title, link, description, id };
 
-        koans.push({ title, link, description });
+        // if ../next/public/audio contains id.mp3, add audio: id.mp3
+        const audioPath = `../next/public/audio/${id}.mp3`;
+        const hasAudio = fs.existsSync(audioPath);
+
+        if (hasAudio) {
+          koan.audio = `${id}.mp3`;
+        }
+
+        // if ../next/public/pics contains id.jpeg or id.jpg, add image: id.jpeg or id.jpg
+        const imagePath = `../next/public/pics/${id}.jpg`;
+        const hasImage = fs.existsSync(imagePath);
+
+        if (hasImage) {
+          koan.image = `${id}.jpg`;
+        }
+
+        koans.push(koan);
 
         // If you want to log each koan separately
         console.log(
