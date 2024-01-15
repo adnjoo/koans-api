@@ -19,18 +19,13 @@ export function Card({
 }: CardProps) {
   return (
     <div
-      className={classNames(
-        "flex items-center justify-center max-w-[400px] sm:max-w-3xl",
-        className as string
-      )}
+      className={`mx-auto bg-white rounded-md border flex flex-col ${image && `sm:flex-row`} items-center sm:items-start justify-center max-w-[400px] sm:max-w-3xl`}
+      style={{ boxShadow: "4px 4px grey" }}
     >
-      <div
-        className="max-w-5xl mx-auto bg-white rounded-md overflow-hidden border"
-        style={{ boxShadow: "4px 4px grey" }}
-      >
+      <div className='flex flex-col sm:sticky sm:top-[20px] w-full'>
         <a
           href={link}
-          className="block p-4 text-xl font-bold text-center text-blue-500 hover:underline"
+          className="block p-4 text-lg font-bold text-center text-blue-500 hover:underline"
           target="_blank"
         >
           {title}
@@ -39,12 +34,13 @@ export function Card({
           <img
             src={`/pics/${image}`}
             alt={title}
-            className="w-full max-w-[200px] rounded-xl mx-auto sm:max-w-[400px]"
+            className="w-full max-w-[200px] rounded-xl mx-auto sm:max-w-[400px] sm:sticky sm:top-0 sm:h-[400px] sm:w-[400px]"
           />
         )}
-        <div className="p-4 text-md text-center text-gray-700">
-          {parse(description)}
-        </div>
+      </div>
+      <div className="p-4 text-md text-center text-gray-700">
+        <br />
+        {parse(description)}
       </div>
     </div>
   );
