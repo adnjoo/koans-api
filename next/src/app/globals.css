@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Sawarabi Mincho";
+  src: url("/SawarabiMincho-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: Sawarabi Mincho;
+}

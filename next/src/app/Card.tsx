@@ -30,7 +30,7 @@ export default function CardExample({
           <img
             src={`/pics/${image}`}
             alt={title}
-            className="w-full max-w-[200px] rounded-xl mx-auto"
+            className="w-full max-w-[200px] rounded-xl mx-auto sm:max-w-[400px]"
           />
         )}
         <div className="p-4 text-md text-center text-gray-700">

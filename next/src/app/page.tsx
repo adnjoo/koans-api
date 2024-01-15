@@ -21,8 +21,9 @@ export default function Home() {
     console.log(data);
   }, [data]);
   return (
-    <main className="flex min-h-screen flex-col mx-4 sm:mx-32">
-      <div className="flex flex-col items-center my-12">
+    <main className="flex min-h-screen flex-col items-center mx-4 sm:mx-32">
+      <h1 className='my-4 sm:my-12 text-3xl sm:text-5xl'>Zen Koans</h1>
+      <div className="my-4 flex flex-col items-center sm:my-12">
         {data &&
           data.map((d: any) => (
             <CardExample
