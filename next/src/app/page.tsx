@@ -32,15 +32,27 @@ export default function Home() {
   }, [koan, data]);
 
   const goToNextCard = () => {
+    if (currentCardIndex < data.length - 1) {
+      setCurrentCardIndex(currentCardIndex + 1);
+    } else {
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.set("koan", (currentCardIndex + 2).toString());
     router.push(url.toString());
+
   };
 
   const goToPreviousCard = () => {
-    setCurrentCardIndex((prevIndex) =>
-      prevIndex === 0 ? data.length - 1 : prevIndex - 1
-    );
+    if (currentCardIndex > 0) {
+      setCurrentCardIndex(currentCardIndex - 1);
+    } else {
+      return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set("koan", currentCardIndex.toString());
+    router.push(url.toString());
+   
   };
 
   return (
@@ -53,7 +65,7 @@ export default function Home() {
             link={data[currentCardIndex].link}
             description={data[currentCardIndex].description}
             image={data[currentCardIndex].image}
-            className="col-span-10"
+            audio={data[currentCardIndex].audio}
           />
         )}
       </div>

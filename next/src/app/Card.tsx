@@ -1,28 +1,25 @@
 import React from "react";
 import parse from "html-react-parser";
-import { classNames } from "@/lib/helpers";
 
 export type CardProps = {
   link: string;
   title: string;
   description: string;
   image?: string;
-  className?: string;
+  audio?: string;
 };
 
-export function Card({
-  link,
-  title,
-  description,
-  image,
-  className,
-}: CardProps) {
+export function Card({ link, title, description, image, audio }: CardProps) {
   return (
     <div
-      className={`mx-auto bg-white rounded-md border flex flex-col ${image && `sm:flex-row`} items-center sm:items-start justify-center max-w-[400px] sm:max-w-3xl`}
+      className={`mx-auto bg-white rounded-md border flex flex-col ${
+        image && `sm:flex-row`
+      } items-center sm:items-start justify-center max-w-[400px] sm:max-w-3xl`}
       style={{ boxShadow: "4px 4px grey" }}
     >
-      <div className='flex flex-col sm:sticky sm:top-[20px] w-full'>
+      <div
+        className={`flex flex-col ${image && `sm:sticky sm:top-[20px]`} w-full`}
+      >
         <a
           href={link}
           className="block p-4 text-lg font-bold text-center text-blue-500 hover:underline"
@@ -30,6 +27,11 @@ export function Card({
         >
           {title}
         </a>
+        {audio && (
+          <div className="mx-auto mb-4">
+            <audio controls src={`/audio/${audio}`} />
+          </div>
+        )}
         {image && (
           <img
             src={`/pics/${image}`}
