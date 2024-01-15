@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Footer } from '@/app/Footer'
 
 export const metadata: Metadata = {
   title: 'Zen Koans',
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}
+      <Footer />
+      </body>
     </html>
   )
 }

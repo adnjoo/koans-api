@@ -1,11 +1,13 @@
 import React from "react";
-import parse from 'html-react-parser'
+import parse from "html-react-parser";
+import { classNames } from "@/lib/helpers";
 
 export type CardProps = {
   link: string;
   title: string;
   description: string;
   image?: string;
+  className?: string;
 };
 
 export function Card({
@@ -13,9 +15,15 @@ export function Card({
   title,
   description,
   image,
+  className,
 }: CardProps) {
   return (
-    <div className="flex items-center justify-center mt-8 max-w-[400px] sm:max-w-3xl">
+    <div
+      className={classNames(
+        "flex items-center justify-center max-w-[400px] sm:max-w-3xl",
+        className as string
+      )}
+    >
       <div
         className="max-w-5xl mx-auto bg-white rounded-md overflow-hidden border"
         style={{ boxShadow: "4px 4px grey" }}
