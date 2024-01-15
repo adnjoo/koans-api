@@ -22,7 +22,7 @@ export default function Home() {
   }, [data]);
   return (
     <main className="flex min-h-screen flex-col mx-4 sm:mx-32">
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center my-12">
         {data &&
           data.map((d: any) => (
             <CardExample
@@ -30,6 +30,7 @@ export default function Home() {
               link={d.link}
               title={d.title}
               description={d.description}
+              image={d.image}
             />
           ))}
       </div>
