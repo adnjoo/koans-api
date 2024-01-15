@@ -18,7 +18,7 @@ export function Card({ link, title, description, image, audio }: CardProps) {
       style={{ boxShadow: "4px 4px grey" }}
     >
       <div
-        className={`flex flex-col ${image && `sm:sticky sm:top-[20px]`} w-full`}
+        className={`flex flex-col ${image && `sm:sticky sm:top-[20px] ml-4 mb-4`} w-full`}
       >
         <a
           href={link}
