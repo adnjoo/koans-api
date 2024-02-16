@@ -52,6 +52,18 @@ export default function Home() {
     } else if (currentCardIndex === 0) {
       setCurrentCardIndex(data.length - 1);
     }
+  React.useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === 'ArrowRight') {
+        goToNextCard();
+      } else if (event.key === 'ArrowLeft') {
+        goToPreviousCard();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [goToNextCard, goToPreviousCard]);
     const url = new URL(window.location.href);
     url.searchParams.set("koan", String(data.length));
     router.push(url.toString());
