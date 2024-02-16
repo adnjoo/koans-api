@@ -47,13 +47,15 @@ export default function Home() {
   };
 
   const goToPreviousCard = () => {
+    let nextIndex = currentCardIndex;
     if (currentCardIndex > 0) {
-      setCurrentCardIndex(currentCardIndex - 1);
+      nextIndex = currentCardIndex - 1;
     } else if (currentCardIndex === 0) {
-      setCurrentCardIndex(data.length - 1);
+      nextIndex = data.length - 1;
     }
+    setCurrentCardIndex(nextIndex);
     const url = new URL(window.location.href);
-    url.searchParams.set("koan", String(data.length));
+    url.searchParams.set("koan", (nextIndex + 1).toString());
     router.push(url.toString());
   };
 
