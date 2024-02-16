@@ -34,25 +34,23 @@ export default function Home() {
   const goToNextCard = () => {
     if (currentCardIndex < data.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
-    } else {
-      return;
+    } else if (currentCardIndex === data.length - 1) {
+      setCurrentCardIndex(0);
     }
     const url = new URL(window.location.href);
     url.searchParams.set("koan", (currentCardIndex + 2).toString());
     router.push(url.toString());
-
   };
 
   const goToPreviousCard = () => {
     if (currentCardIndex > 0) {
       setCurrentCardIndex(currentCardIndex - 1);
-    } else {
-      return;
+    } else if (currentCardIndex === 0) {
+      setCurrentCardIndex(data.length - 1);
     }
     const url = new URL(window.location.href);
     url.searchParams.set("koan", currentCardIndex.toString());
     router.push(url.toString());
-   
   };
 
   return (
