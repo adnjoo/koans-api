@@ -32,13 +32,17 @@ export default function Home() {
   }, [koan, data]);
 
   const goToNextCard = () => {
+    const isLastCard = currentCardIndex === data.length - 1;
     if (currentCardIndex < data.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
-    } else if (currentCardIndex === data.length - 1) {
+    } else if (isLastCard) {
       setCurrentCardIndex(0);
     }
     const url = new URL(window.location.href);
-    url.searchParams.set("koan", (currentCardIndex + 2).toString());
+    url.searchParams.set(
+      "koan",
+      isLastCard ? "1" : (currentCardIndex + 2).toString()
+    );
     router.push(url.toString());
   };
 
@@ -49,13 +53,15 @@ export default function Home() {
       setCurrentCardIndex(data.length - 1);
     }
     const url = new URL(window.location.href);
-    url.searchParams.set("koan", currentCardIndex.toString());
+    url.searchParams.set("koan", String(data.length));
     router.push(url.toString());
   };
 
   return (
     <main className="flex flex-col min-h-screen items-center mx-4 sm:mx-32">
-      <h1 className="my-4 sm:my-6 text-3xl sm:text-5xl">Zen Koans</h1>
+      <a href="/">
+        <h1 className="my-4 sm:my-6 text-3xl sm:text-5xl">Zen Koans</h1>
+      </a>
       <div className="my-4 flex flex-row items-center gap-4">
         {data[currentCardIndex] && (
           <Card
